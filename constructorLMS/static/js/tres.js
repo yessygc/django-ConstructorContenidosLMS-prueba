@@ -73,26 +73,35 @@ document.querySelectorAll('.toggle-button').forEach(function (button) {
             }
           };
           setup = function (editor) {
-            editor.on('change', function () {
+            editor.on('input', function () {
               actualizarContenido(editor);
             });
-          } 
+          }
           break;
         case 'editor-3':
           plugins = 'media';
           toolbar = 'undo redo | media';
-          file_picker_types = 'video';
+          file_picker_types = ['video', 'audio']; // Permitir seleccionar archivos de video y audio
           file_picker_callback = function (callback, value, meta) {
-            if (meta.filetype == 'video') {
+            if (meta.filetype == 'video' || meta.filetype == 'audio') { // Verificar si es video o audio
               openFileSelector(function (url) {
                 callback(url);
               });
             }
           };
           break;
+
         case 'editor-4':
           plugins = 'media';
           toolbar = 'undo redo | media';
+          file_picker_types = ['video', 'audio']; // Permitir seleccionar archivos de video y audio
+          file_picker_callback = function (callback, value, meta) {
+            if (meta.filetype == 'audio' || meta.filetype == 'video') { // Verificar si es video o audio
+              openFileSelector(function (url) {
+                callback(url);
+              });
+            }
+          };
           break;
       }
       tinymce.init({
@@ -108,7 +117,7 @@ document.querySelectorAll('.toggle-button').forEach(function (button) {
           editor.on('input', function () {
             actualizarContenido(editor);
           });
-        }        
+        }
       });
       currentEditor = container;
     } else {
