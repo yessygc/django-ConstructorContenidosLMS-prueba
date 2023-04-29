@@ -1,0 +1,11 @@
+{% extends "tres.html" %}
+
+{% block content %}
+<div id="editor-2"></div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    FB_Browser.init('{% url "fb_browse" %}', '{{ MEDIA_URL }}', '{{ STATIC_URL }}');
+});
+</script>
+{% endblock %}

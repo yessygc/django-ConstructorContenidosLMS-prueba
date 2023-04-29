@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'tinymce/skins/ui/oxide/skin.min.css' %}">
+    <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <script src="{% static 'tinymce/jquery.tinymce.min.js' %}"></script>
+    <script src="{% static 'tinymce/plugins/link/plugin.min.js' %}"></script>
+    <script src="{% static 'tinymce/plugins/image/plugin.min.js' %}"></script>
+    <script src="{% static 'tinymce/plugins/table/plugin.min.js' %}"></script>
+</head>
+
+<body>
+    <button onclick="toggleEditor('editor-1-container')">Mostrar editor 1</button>
+    <div id="editor-1-container" style="display: none;">
+        <textarea id="editor-1"></textarea>
+    </div>
+
+    <button onclick="toggleEditor('editor-2-container')">Mostrar editor 2</button>
+    <div id="editor-2-container" style="display: none;">
+        <textarea id="editor-2"></textarea>
+    </div>
+
+    <button onclick="toggleEditor('editor-3-container')">Mostrar editor 3</button>
+    <div id="editor-3-container" style="display: none;">
+        <textarea id="editor-3"></textarea>
+    </div>
+
+    <button onclick="toggleEditor('editor-4-container')">Mostrar editor 4</button>
+    <div id="editor-4-container" style="display: none;">
+        <textarea id="editor-4"></textarea>
+    </div>
+
+
+    <script src="{% static 'js/dos.js' %}"></script>
+</body>
+
+</html>

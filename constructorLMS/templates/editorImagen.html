@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'tinymce/skins/ui/oxide/skin.min.css' %}">
+    <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <script src="{% static 'tinymce/jquery.tinymce.min.js' %}"></script>
+    <script src="{% static 'tinymce/plugins/link/plugin.min.js' %}"></script>
+    <script src="{% static 'tinymce/plugins/image/plugin.min.js' %}"></script>
+    <script src="{% static 'tinymce/plugins/table/plugin.min.js' %}"></script>
+
+</head>
+
+<body>
+
+    <div id="editor-1"></div>
+
+
+    <button onclick="toggleEditor('editor-1-container')">Mostrar editor 1</button>
+    <div id="editor-1-container" style="display: none;"></div>
+
+    <button onclick="toggleEditor('editor-2-container')">Mostrar editor 2</button>
+    <div id="editor-2-container" style="display: none;"></div>
+
+    <button onclick="toggleEditor('editor3', 'link', 'link')">Mostrar Editor 3</button>
+    <div id="editor3" style="display:none;"></div>
+
+    <button onclick="toggleEditor('editor4', 'link', 'code')">Mostrar Editor 4</button>
+    <div id="editor4" style="display:none;"></div>
+
+    <!--<button onclick="initEditor4(); document.getElementById('editor-4-container').style.display = 'block';">Mostrar
+        editor 4</button>
+    <div id="editor-4-container" style="display: none;">
+        <div id="editor-4"></div>
+    </div> -->
+
+
+    <script src="{% static 'js/ejemplo.js' %}"></script>
+</body>
+
+</html>

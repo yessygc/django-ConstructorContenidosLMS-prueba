@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+/* Estilos para el contenedor del Menú */
+.menu {
+    background-color: #BEBEBE;
+    height: 50px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+nav .icons ul li {
+    display: inline-block;
+    list-style: none;
+}
+
+nav .icons ul li i {
+    font-size: 25px;
+    margin: 5px 30px;
+}
+
+button {
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    margin: 5px 25px;
+}
+
+.icono-menu {
+    margin: 20px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.icono-menu i{
+    vertical-align: top;
+    width: 40px;
+    cursor: pointer;
+}
+
+.cont-menu{
+    background-color: #BEBEBE;
+    box-shadow: 2px 0px 5px 2px rgb(158, 158, 158);
+    width: 300px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .5s ease;
+}
+
+/* Estilos por agregar en JavaScript */
+.active{
+    transform: translate(-600px);
+}
+
+/* Estilos para el listado del Menú */
+.cont-menu ul button{
+    padding: 50px 0px 20px 0px;
+    list-style: none;
+}
+
+.cont-menu ul li{
+    color: white;
+    display: block;
+    font-size: 25px;
+    text-decoration: none;
+    padding: 10px 50px;
+    cursor: pointer;
+}
+
+.cont-menu ul li:hover{
+    background-color: rgb(228,228,228);
+    color: rgb(42,42,42);
+}
+
+/* Estilos para dividir las secciones de diapositivas, visor y componentes */
+main {
+    width: 100vw;
+    height: calc(100vh - 50px);
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+
+/* Estilos para el minimizado */
+main .left {
+    background-color: #DFDFDF;
+    overflow: scroll;
+}
+
+main .left .plus {
+    display: inline-block;
+    list-style: none;
+    margin-left: 70px;
+    margin-top: 10px;
+}
+
+main .left .trash {
+    display: inline-block;
+    list-style: none;
+    margin-left: 60px;
+    margin-top: 10px;
+}
+
+main .left ul {
+    width: 100%;
+    list-style: none;
+}
+
+main .left ul li {
+    width: calc(100% - 30px);
+    height: 100px;
+    margin: 15px;
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para el visor */
+main .center {
+    background-color: #FFF;
+    padding: 25px;
+}
+
+main .center .box-visor {
+    background-color: #FFF;
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .center .editor-texto { 
+    background-color: #FFF;
+}
+
+/* Estilos para los componentes */
+main .right {
+    background-color: #DFDFDF;
+}
+
+main .right ul {
+    width: 100%;
+    list-style: none;
+}
+
+main .right ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 25px;
+    cursor: pointer;
+}
+
+main .right ul li:hover{
+    background-color: #ccc;
+}
