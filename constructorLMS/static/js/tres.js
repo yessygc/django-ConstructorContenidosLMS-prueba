@@ -1,6 +1,6 @@
 var currentEditor = null;
 
-// Función para abrir el explorador de archivos externo
+//Función para abrir el explorador de archivos externo
 function openFileSelector(callback) {
   var input = document.createElement('input');
   input.setAttribute('type', 'file');
@@ -26,17 +26,69 @@ function openFileSelector(callback) {
 // Función para actualizar el contenido mostrado
 function actualizarContenido(editor) {
   var content = editor.getContent();
-  document.getElementById('result-div').innerHTML = content;
+  var editorId = editor.id;
+
+  switch (editorId) {
+    case 'editor-1':
+      document.getElementById('h1-visor').textContent = content;
+      break;
+    case 'editor-2':
+      document.getElementById('h2-visor').textContent = content;
+      break;
+    case 'editor-3':
+      document.getElementById('p-visor').textContent = content;
+      break;
+    default:
+      break;
+  }
 }
 
-function mostrarContenidoEnTiempoReal(editor) {
-  editor.on('change', function () {
-    var content = editor.getContent();
-    document.getElementById('result-div').innerHTML = content;
+interact('.draggable')
+  .draggable({
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+    listeners: {
+      start(event) {
+        event.target.classList.add('dragging');
+      },
+      move(event) {
+        const { dx, dy } = event;
+        const target = event.target;
+
+        const x = (parseFloat(target.getAttribute('data-x')) || 0) + dx;
+        const y = (parseFloat(target.getAttribute('data-y')) || 0) + dy;
+
+        target.style.transform = `translate(${x}px, ${y}px)`;
+
+        target.setAttribute('data-x', x);
+        target.setAttribute('data-y', y);
+      },
+      end(event) {
+        event.target.classList.remove('dragging');
+        event.target.removeAttribute('data-x');
+        event.target.removeAttribute('data-y');
+      }
+    }
+  })
+  .resizable({
+    edges: { left: true, right: true, bottom: true, top: true },
+    listeners: {
+      move(event) {
+        const target = event.target;
+        const { width, height } = event.rect;
+
+        target.style.width = `${width}px`;
+        target.style.height = `${height}px`;
+      }
+    }
   });
-}
 
-
+/*Función para abrir y cerrar los botones y que se muestre su respectivo editor*/
 document.querySelectorAll('.toggle-button').forEach(function (button) {
   button.addEventListener('click', function () {
     var containerId = this.dataset.editor;
@@ -59,6 +111,11 @@ document.querySelectorAll('.toggle-button').forEach(function (button) {
           selector = 'textarea#premiumskinsandicons-fluent',
             plugins = 'wordcount fontselect fontsizeselect';
           toolbar = 'undo redo | blocks | bold italic forecolor backcolor formatselect fontselect fontsizeselect| alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat';
+          setup = function (editor) {
+            editor.on('input', function () {
+              actualizarContenido(editor);
+            });
+          }
           break;
         case 'editor-2':
           selector = 'textarea#drive-pick-images-example';
@@ -89,8 +146,12 @@ document.querySelectorAll('.toggle-button').forEach(function (button) {
               });
             }
           };
+          setup = function (editor) {
+            editor.on('input', function () {
+              actualizarContenido(editor);
+            });
+          }
           break;
-
         case 'editor-4':
           plugins = 'media';
           toolbar = 'undo redo | media';
@@ -102,6 +163,11 @@ document.querySelectorAll('.toggle-button').forEach(function (button) {
               });
             }
           };
+          setup = function (editor) {
+            editor.on('input', function () {
+              actualizarContenido(editor);
+            });
+          }
           break;
       }
       tinymce.init({
@@ -127,3 +193,24 @@ document.querySelectorAll('.toggle-button').forEach(function (button) {
     }
   });
 });
+
+function guardarContenido() {
+  var visorDiapositiva = document.querySelector('#result-div');
+  var diapositivaId = visorDiapositiva.getAttribute('name');
+  var titulo = document.getElementById('h1-visor').textContent;
+  var subtitulo = document.getElementById('h2-visor').textContent;
+  var contenido = document.getElementById('p-visor').textContent;
+
+  var diapositiva = diapositivasBase.find(function (diapositiva) {
+    return diapositiva.id === diapositivaId;
+  });
+
+  if (diapositiva) {
+    diapositiva.titulo = titulo;
+    diapositiva.subtitulo = subtitulo;
+    diapositiva.contenido = contenido;
+  }
+
+  console.log(diapositivasBase);
+}
+

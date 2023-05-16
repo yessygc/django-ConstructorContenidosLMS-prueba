@@ -49,12 +49,3 @@ class ElementoAudio(models.Model):
     audio = models.ForeignKey(Componentes, on_delete=models.CASCADE)
 
 
-# class MyImage(models.Model):
-#    image = models.ImageField(upload_to='images')
-#    thumbnail = ImageSpecField(source='image',
-#                               processors=[ResizeToFill(100, 100)],
-#                               format='JPEG',
-#                               options={'quality': 60})
-
-# class MyModel(models.Model):
-#    my_field = tinymce_models.HTMLField()

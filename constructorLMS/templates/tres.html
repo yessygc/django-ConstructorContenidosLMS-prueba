@@ -7,19 +7,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <!-- CSS -->
     <link type='text/css' rel="stylesheet" href='{% static "css/styles.css" %}'>
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'tinymce/skins/ui/oxide/skin.min.css' %}">
-    <!-- TINYMCE 
-    <script src="{% static 'tinymce/js/tinymce/tinymce.min.js' %}"></script>-->
+    <!-- DRAGGABLE -->
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <!-- Entire bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.bundle.js"></script>
+    <!-- legacy bundle for older browsers (IE11) -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.bundle.legacy.js"></script>
+    <!-- Draggable only -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.js"></script>
+    <!-- Sortable only -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/sortable.js"></script>
+    <!-- Droppable only -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/droppable.js"></script>
+    <!-- Swappable only -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/swappable.js"></script>
+    <!-- Plugins only -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/plugins.js"></script>
+    <!-- TINYMCE
+    <script src="{% static 'tinymce/js/tinymce/tinymce.min.js' %}"></script> -->
     <link rel="stylesheet" href="{% static 'tinymce/skins/ui/oxide/skin.min.css' %}">
     <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
     <script src="{% static 'tinymce/jquery.tinymce.min.js' %}"></script>
     <script src="{% static 'tinymce/plugins/link/plugin.min.js' %}"></script>
     <script src="{% static 'tinymce/plugins/image/plugin.min.js' %}"></script>
-    <script src="{% static 'tinymce/plugins/table/plugin.min.js' %}"></script>
+    <script src="{% static 'tinymce/plugins/table/plugin.min.js' %}"></script> 
 </head>
 
 <body>
@@ -31,18 +49,18 @@
 
         <div class="cont-menu active" id="menu">
             <ul>
-                <li> Nuevo </li>
+                <li data-menu-item="1"> Nuevo </li>
                 <label for="seleccionador-archivos">
-                    <li> Abrir </li>
+                    <li data-menu-item="2"> Abrir </li>
                 </label>
                 <input type="file" id="seleccionador-archivos" style="display:none">
-                <li> Guardar </li>
+                <li data-menu-item="3"> Guardar </li>
                 <label for="seleccionador-archivos">
-                    <li> Guardar como </li>
+                    <li data-menu-item="4"> Guardar como </li>
                 </label>
                 <input type="file" id="seleccionador-archivos" style="display:none">
-                <li> Exportar a xAPI</li>
-                <li> Exportar a SCORM</li>
+                <li data-menu-item="5"> Exportar a xAPI</li>
+                <li data-menu-item="6"> Exportar a SCORM</li>
             </ul>
         </div>
 
@@ -83,15 +101,15 @@
                 </svg>
             </div>
             <ul class="miniaturas">
-                <li><a href="#diapositiva1"></a></li>
-                <li><a href="#diapositiva2"></a></li>
             </ul>
         </div>
         <div class="center">
             <div class="box-visor">
-                <div id="result-div">
-                    <div id="diapositiva1"></div>
-                    <div id="diapositiva2"></div>
+                <div id="result-div" name="">
+                    <!--<h1 contenteditable="true" class="draggable resizable" data-editor="editor-1" id="h1-visor">Título</h1>
+                    <h2 contenteditable="true" class="draggable resizable" data-editor="editor-2">Subtítulo</h2>
+                    <p contenteditable="true" class="draggable resizable" data-editor="editor-3"></p>
+                    <div contenteditable="true" class="draggable resizable" data-editor="editor-4">Contenido</div>-->
                 </div>
             </div>
             <div id="editor-1" style="display: none;">
@@ -171,8 +189,8 @@
     </main>
 
     <script src="{% static 'js/tres.js' %}"></script>
-    <script src="{% static 'js/app.js' %}"></script>
-    <script src="{% static 'js/slides.js' %}"></script>
+    <script src="{% static 'js/menu.js' %}"></script>
+    <script src="{% static 'js/miniaturas.js' %}"></script>
 </body>
 
 </html>

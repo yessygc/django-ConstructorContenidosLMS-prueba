@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- diapositivas.html -->
+    <h1>Diapositivas</h1>
+
+    <!-- Formulario de creación -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Crear Diapositiva</button>
+    </form>
+
+    <!-- Lista de diapositivas -->
+    <ul>
+        {% for diapositiva in diapositivas %}
+        <li>
+            <a href="?diapositiva_id={{ diapositiva.id }}">
+                <h2>{{ diapositiva.titulo }}</h2>
+                <p>{{ diapositiva.contenido }}</p>
+                <img src="{{ diapositiva.imagen.url }}" alt="Imagen de la diapositiva">
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Diapositiva seleccionada en formato más grande -->
+    {% if diapositiva_seleccionada %}
+    <div class="diapositiva-seleccionada">
+        <h2>{{ diapositiva_seleccionada.titulo }}</h2>
+        <p>{{ diapositiva_seleccionada.contenido }}</p>
+        <img src="{{ diapositiva_seleccionada.imagen.url }}" alt="Imagen de la diapositiva">
+    </div>
+    {% endif %}
+
+
+</body>
+
+</html>
