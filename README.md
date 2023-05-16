@@ -3,7 +3,7 @@
 **Pasos para poder correr el proyecto sin ningún error**
 
 1. Clonar o descargar el código desde el siguiente enlace
-* https://github.com/yessygc/django-pruebas
+* [GitHUb] https://github.com/yessygc/django-pruebas
 2. Crear un entorno virtual y activarlo
 * Crear entorno virtual: ```virtualenv -p python3 env```
 * Activar entorno virtual: ```source env/bin/activate```
